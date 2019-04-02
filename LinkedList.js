@@ -1,4 +1,3 @@
-
 class LinkedList {
 
     constructor() {
@@ -24,11 +23,12 @@ class LinkedList {
     prepAdd (val) {
         var newNode = {
             data: val,
-            next: this.head,
+            next: null,
             prev: null
         };
 
-
+        this.head.prev = newNode;
+        newNode.next = this.head;
         this.head = newNode;
 
     };
@@ -36,13 +36,13 @@ class LinkedList {
     append (val) {
         var newNode = {
             data: val,
-            prev: this.tail,
+            prev: null,
             next: null
         };
 
         if (this.isEmpty()) {
             this.head = newNode;
-            // this.tail = newNode;
+            this.tail = newNode;
             return;
         }
 
@@ -61,7 +61,7 @@ class LinkedList {
     contains (val) {
         var current = this.head;
         while (current !== null) {
-            if (current.data = val) {
+            if (current.data === val) {
                 return true;
             }
         current = current.next;
